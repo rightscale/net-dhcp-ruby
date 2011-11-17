@@ -1,5 +1,6 @@
 Net::DHCP library for ruby, originally written by etd.
 Fork to github by syonbori.
+Additional fork and gemification by mjtko.
 
 Here is original README:
 The svn repository for Net::DHCP contains the project files to use with NetBeans IDE.
