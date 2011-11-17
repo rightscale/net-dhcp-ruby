@@ -3,7 +3,7 @@ require 'net-dhcp/version'
 
 Gem::Specification.new do |s|
   s.name = 'net-dhcp'
-  s.version = NetDhcp::VERSION
+  s.version = Net::Dhcp::VERSION
   s.platform = Gem::Platform::RUBY
   s.date = '2011-11-17'
   s.authors = ['daniel martin gomez (etd)', 'syonbori', 'Mark J. Titorenko']
