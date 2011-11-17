@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name = 'net-dhcp'
   s.version = Net::Dhcp::VERSION
   s.platform = Gem::Platform::RUBY
-  s.date = '2011-11-17'
+  s.date = "2011-11-17"
   s.authors = ['daniel martin gomez (etd)', 'syonbori', 'Mark J. Titorenko']
   s.email = 'mark.titorenko@alces-software.com'
   s.homepage = 'http://github.com/mjtko/net-dhcp'
@@ -25,7 +25,6 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ['lib']
 
-  s.add_runtime_dependency 'pcap', '~> 0.7.0'
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'bueller'
