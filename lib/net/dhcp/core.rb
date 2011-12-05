@@ -157,7 +157,7 @@ module DHCP
       self.giaddr
       ].pack('C4Nn2N4')
 
-      out << self.chaddr.pack('C*')
+      out << self.chaddr.pack('C16')
     
       
       # sname and file
