@@ -160,7 +160,7 @@ module DHCP
       if self.chaddr.size >= 16
         out << self.chaddr.pack('C16')
       else
-        out << (self.chaddr + [0x00]*(19-self.chaddr.size)).pack('C16')
+        out << (self.chaddr + [0x00]*(16-self.chaddr.size)).pack('C16')
       end
       
       # sname and file
