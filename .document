@@ -9,3 +9,5 @@ bin/*
 - 
 features/**/*.feature
 LICENSE
+README
+CHANGELOG
