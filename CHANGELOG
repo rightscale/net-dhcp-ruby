@@ -1,0 +1,11 @@
+*1.0.2
+
+* Ensure chaddr is packed to the correct size (https://github.com/mjtko/net-dhcp-ruby/pull/1) [rakshasa]
+
+*1.0.1
+
+* Look in correct place for VERSION constant (gemification patch) [mjtko]
+
+*1.0.0
+
+* Initial release to rubygems - originally authored by etd, migrated to github by syonbori, gemified by mjtko. [mjtko]
