@@ -1,3 +1,7 @@
+*1.1.0
+
+* Added BroadcastAddressOption and cleaned up the output for some options to make them more readable [rakshasa]
+
 *1.0.2
 
 * Ensure chaddr is packed to the correct size (https://github.com/mjtko/net-dhcp-ruby/pull/1) [rakshasa]
