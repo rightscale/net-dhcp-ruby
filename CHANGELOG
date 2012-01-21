@@ -1,3 +1,11 @@
+*1.1.1
+
+* Replace incorrect equality check with assignment in Message#from_udp_payload to correct behaviour when an unrecognised option or message is encountered [mjtko]
+* Allow callers to disable the debug output emitted in Message#from_udp_payload for unrecognised options or messages [mjtko]
+* Added rake test task [mjtko]
+* Correct test_from_udp_payload test assertion [mjtko]
+* Default to 00:00:00:00:00:00 in Message#initialize if local MAC address can't be read [mjtko]
+
 *1.1.0
 
 * Added BroadcastAddressOption and cleaned up the output for some options to make them more readable [rakshasa]

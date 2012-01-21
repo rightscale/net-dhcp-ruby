@@ -33,7 +33,8 @@ module DHCP
 
     alias == eql?
     
-    def Message.from_udp_payload(data)
+    def Message.from_udp_payload(data, opts={})
+      opts = {:debug => true}.merge(opts)
       values = data.unpack('C4Nn2N4C16C192NC*')
 
       params = {
@@ -74,11 +75,13 @@ module DHCP
         
         # check what is the type of dhcp option
         opt_class = $DHCP_MSG_OPTIONS[p[:type]]
-        if(opt_class.nil?)
-          puts '-------------------- please further investigate!!'
-          puts p[:type]
-          puts '-------------------- /'
-          opt_class == Option
+        if opt_class.nil?
+          if opts[:debug]
+            puts '-------------------- please further investigate!!'
+            puts p[:type]
+            puts '-------------------- /'
+          end
+          opt_class = Option
         end
         if (opt_class == MessageTypeOption)
           msg_class = $DHCP_MSG_CLASSES[p[:payload].first]
@@ -87,11 +90,13 @@ module DHCP
         next_opt = values.shift
       end
       
-      if(msg_class.nil?)
-        puts '-------------------- please further investigate!!'
-        p params[:options]
-        puts '-------------------- /'
-        opt_class == Option
+      if msg_class.nil?
+        if opts[:debug]
+          puts '-------------------- please further investigate!!'
+          p params[:options]
+          puts '-------------------- /'
+        end
+        msg_class = Message
       end
       msg_class.new(params)
     end
@@ -139,6 +144,7 @@ module DHCP
         raise 'chaddr field should be of 16 bytes' unless self.chaddr.size == 16
       else
         mac = `/sbin/ifconfig | grep HWaddr | cut -c39- | head -1`.chomp.strip.gsub(/:/,'')
+        mac = '000000000000' if mac.empty?
         self.chaddr = [mac].pack('H*').unpack('CCCCCC')
         self.chaddr += [0x00]*(16-self.chaddr.size)
       end

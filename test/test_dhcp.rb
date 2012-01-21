@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 # dhcp_test.rb
 # 4 de octubre de 2007
 #
@@ -6,7 +7,7 @@ $:.unshift File.join(File.dirname(__FILE__),'..','lib')
 
 require 'test/unit'
 
-require 'dhcp'
+require 'net-dhcp'
 
 class TestDhcp_test < Test::Unit::TestCase
 #  def setup
@@ -63,9 +64,7 @@ class TestDhcp_test < Test::Unit::TestCase
     d1 = DHCP::Discover.new
     d2 = DHCP::Message.from_udp_payload(d1.pack)
     
-    #assert_equal d1, d2, 'udp data is not correctly parsed'
-    puts d1.eql?(d2)
-    puts(d1 == d2)
+    assert d1.eql?(d2), 'udp data is not correctly parsed'
   end
   
 end
