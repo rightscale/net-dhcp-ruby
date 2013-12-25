@@ -44,7 +44,7 @@ module DHCP
     # Return the option packed as an array of bytes. The first two elements
     # are the type and length of this option. The payload follows afterwards.
     def to_a
-      return [self.type, self.len] + [self.payload]
+      return [self.type, self.len] + self.payload
     end
 
     # Return the option packed as a binary string.
@@ -255,7 +255,7 @@ module DHCP
     #DEBUG
     def initialize(params={})
       params[:type] = $DHCP_MESSAGETYPE
-      params[:payload] = params.fetch(:payload, $DHCP_MSG_DISCOVER)
+      params[:payload] = params.fetch(:payload, [$DHCP_MSG_DISCOVER])
       super(params)
     end
 
