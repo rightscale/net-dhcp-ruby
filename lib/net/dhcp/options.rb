@@ -33,7 +33,7 @@ module DHCP
     def initialize(params = {})
       # We need a type, and a payload
       if (([:type, :payload] & params.keys).size != 2)
-        raise ArgumentError('you need to specify values for :type and :payload')
+        raise ArgumentError, 'you need to specify values for :type and :payload'
       end
 
       self.type = params[:type]
