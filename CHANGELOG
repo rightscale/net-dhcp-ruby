@@ -1,3 +1,9 @@
+*1.2.0
+
+* Fix Array handling for message payloads [presto53]
+* Use a raise syntax that isn't archaic [presto53]
+* Depend on simplecov rather than rcov for Ruby 1.9+ compat [mjtko]
+
 *1.1.1
 
 * Replace incorrect equality check with assignment in Message#from_udp_payload to correct behaviour when an unrecognised option or message is encountered [mjtko]

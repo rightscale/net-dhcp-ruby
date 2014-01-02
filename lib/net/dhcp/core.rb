@@ -108,7 +108,7 @@ module DHCP
       # message operation and options. We need at least an operation and a 
       # MessageTypeOption to create a DHCP message!!
       if (([:op, :options]  & params.keys).size != 2)
-        raise ArgumentError('you need to specify at least values for :op and :options') 
+        raise ArgumentError, 'you need to specify at least values for :op and :options'
       end
       
       self.op = params[:op]
@@ -119,7 +119,7 @@ module DHCP
         next unless opt.class == MessageTypeOption
         found = true
       end
-      raise ArgumentError(':options must include a MessageTypeOption') unless found
+      raise ArgumentError, ':options must include a MessageTypeOption' unless found
     
       #hardware type and length of the hardware address
       self.htype = params.fetch(:htype, $DHCP_HTYPE_ETHERNET)
@@ -293,7 +293,7 @@ module DHCP
   class Request < Message
     def initialize(params={})
       params[:op] = $DHCP_OP_REQUEST
-      params[:options] = params.fetch(:options, [MessageTypeOption.new({:payload=>$DHCP_MSG_REQUEST}), ParameterRequestListOption.new])
+      params[:options] = params.fetch(:options, [MessageTypeOption.new({:payload=>[$DHCP_MSG_REQUEST]}), ParameterRequestListOption.new])
       super(params)
     end
   end
@@ -311,7 +311,7 @@ module DHCP
     def initialize(params={})
       params[:op] = $DHCP_OP_REPLY
       params[:options] = params.fetch(:options, [
-      MessageTypeOption.new({:payload=>$DHCP_MSG_ACK}), 
+      MessageTypeOption.new({:payload=>[$DHCP_MSG_ACK]}), 
       ServerIdentifierOption.new,
       DomainNameOption.new
       ])
@@ -331,7 +331,7 @@ module DHCP
     def initialize(params={})
       params[:op] = $DHCP_OP_REQUEST
       params[:options] = params.fetch(:options, [
-      MessageTypeOption.new({:payload=>$DHCP_MSG_RELEASE}), 
+      MessageTypeOption.new({:payload=>[$DHCP_MSG_RELEASE]}), 
       ServerIdentifierOption.new
       ])
       super(params)
@@ -343,7 +343,7 @@ module DHCP
   class Inform < Message
     def initialize(params={})
       params[:op] = $DHCP_OP_REQUEST
-      params[:options] = params.fetch(:options, [MessageTypeOption.new({:payload=>$DHCP_MSG_INFORM}), ParameterRequestListOption.new])
+      params[:options] = params.fetch(:options, [MessageTypeOption.new({:payload=>[$DHCP_MSG_INFORM]}), ParameterRequestListOption.new])
       super(params)
     end
   end
