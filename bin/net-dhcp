@@ -3,6 +3,7 @@
 #
 
 require 'dhcp'
+require 'net/dhcp'
 require 'socket'
 require 'pcaplet'
 
@@ -30,6 +31,7 @@ payload = discover.pack
 
 sckt = UDPSocket.new
 sckt.setsockopt(Socket::SOL_SOCKET, Socket::SO_BROADCAST,true)
+sckt.setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEADDR, true)
 sckt.bind('', 68)
 sckt.send(payload, 0, "<broadcast>", 67)
 
