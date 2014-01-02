@@ -108,7 +108,7 @@ module DHCP
       # message operation and options. We need at least an operation and a 
       # MessageTypeOption to create a DHCP message!!
       if (([:op, :options]  & params.keys).size != 2)
-        raise ArgumentError('you need to specify at least values for :op and :options') 
+        raise ArgumentError, 'you need to specify at least values for :op and :options'
       end
       
       self.op = params[:op]
@@ -119,7 +119,7 @@ module DHCP
         next unless opt.class == MessageTypeOption
         found = true
       end
-      raise ArgumentError(':options must include a MessageTypeOption') unless found
+      raise ArgumentError, ':options must include a MessageTypeOption' unless found
     
       #hardware type and length of the hardware address
       self.htype = params.fetch(:htype, $DHCP_HTYPE_ETHERNET)
