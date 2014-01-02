@@ -293,7 +293,7 @@ module DHCP
   class Request < Message
     def initialize(params={})
       params[:op] = $DHCP_OP_REQUEST
-      params[:options] = params.fetch(:options, [MessageTypeOption.new({:payload=>$DHCP_MSG_REQUEST}), ParameterRequestListOption.new])
+      params[:options] = params.fetch(:options, [MessageTypeOption.new({:payload=>[$DHCP_MSG_REQUEST]}), ParameterRequestListOption.new])
       super(params)
     end
   end
@@ -311,7 +311,7 @@ module DHCP
     def initialize(params={})
       params[:op] = $DHCP_OP_REPLY
       params[:options] = params.fetch(:options, [
-      MessageTypeOption.new({:payload=>$DHCP_MSG_ACK}), 
+      MessageTypeOption.new({:payload=>[$DHCP_MSG_ACK]}), 
       ServerIdentifierOption.new,
       DomainNameOption.new
       ])
@@ -331,7 +331,7 @@ module DHCP
     def initialize(params={})
       params[:op] = $DHCP_OP_REQUEST
       params[:options] = params.fetch(:options, [
-      MessageTypeOption.new({:payload=>$DHCP_MSG_RELEASE}), 
+      MessageTypeOption.new({:payload=>[$DHCP_MSG_RELEASE]}), 
       ServerIdentifierOption.new
       ])
       super(params)
@@ -343,7 +343,7 @@ module DHCP
   class Inform < Message
     def initialize(params={})
       params[:op] = $DHCP_OP_REQUEST
-      params[:options] = params.fetch(:options, [MessageTypeOption.new({:payload=>$DHCP_MSG_INFORM}), ParameterRequestListOption.new])
+      params[:options] = params.fetch(:options, [MessageTypeOption.new({:payload=>[$DHCP_MSG_INFORM]}), ParameterRequestListOption.new])
       super(params)
     end
   end
