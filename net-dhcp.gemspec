@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name = 'net-dhcp'
   s.version = Net::Dhcp::VERSION
   s.platform = Gem::Platform::RUBY
-  s.date = "2012-01-21"
+  s.date = "2014-01-02"
   s.authors = ['daniel martin gomez (etd)', 'syonbori', 'Mark J. Titorenko']
   s.email = 'mark.titorenko@alces-software.com'
   s.homepage = 'http://github.com/mjtko/net-dhcp-ruby'
@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'bueller'
   s.add_development_dependency 'rake'
-  s.add_development_dependency 'rcov'
+  s.add_development_dependency 'simplecov'
   s.add_development_dependency 'rdoc'
 end
 
