@@ -3,10 +3,17 @@
 # 4 de octubre de 2007
 #
 
-require 'dhcp'
-require 'net/dhcp'
-require 'socket'
-require 'pcaplet'
+begin
+  require 'dhcp'
+  require 'net/dhcp'
+  require 'socket'
+  require 'pcaplet'
+rescue LoadError
+  STDERR.puts "Unable to load a required library.  Please ensure you have installed the following gems:"
+  STDERR.puts "  dhcp, ipaddress, ruby-pcap"
+  STDERR.puts "\nError was: #{$!.message}"
+  exit 1
+end
 
 server_thread = Thread.new do
   s = "Packets received by the filter:\n"
