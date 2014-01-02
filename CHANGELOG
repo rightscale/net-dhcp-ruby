@@ -1,3 +1,8 @@
+*1.2.1
+
+* Fix net-dhcp example to allow use of the socket if already in use (mikerodrigues)
+* Fix net-dhcp example script to bail with useful errors if dependencies haven't been installed (mjtko)
+
 *1.2.0
 
 * Fix Array handling for message payloads [presto53]
