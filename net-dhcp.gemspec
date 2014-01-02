@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.date = "2014-01-01"
   s.authors = ['daniel martin gomez (etd)', 'syonbori', 'Mark J. Titorenko']
   s.email = 'mark.titorenko@alces-software.com'
-  s.homepage = 'http://github.com/mjtko/net-dhcp-ruby' 
+  s.homepage = 'http://github.com/mjtko/net-dhcp-ruby'
   s.summary = %Q{set of classes to low level handle the DHCP protocol}
   s.description = %Q{The aim of Net::DHCP is to provide a set of classes to low level handle the DHCP protocol (rfc2131, rfc2132, etc.). With Net::DHCP you will be able to craft custom DHCP packages and have access to all the fields defined for the protocol.}
   s.extra_rdoc_files = [
