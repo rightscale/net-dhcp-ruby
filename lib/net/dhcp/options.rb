@@ -144,7 +144,7 @@ module DHCP
   # The default value for this option is 'caprica'
   class HostNameOption < Option
     def initialize(params={})
-      params[:type] = $DHCP_DNS
+      params[:type] = $DHCP_HOSTNAME
       params[:payload] = params.fetch(:payload, 'caprica'.unpack('C*'))
       super(params)
     end
