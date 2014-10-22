@@ -22,6 +22,8 @@
 **
 =end
 
+require 'rubygems'
+
 module DHCP
   # -------------------------------------------------------------- dhcp messages
   class Message
@@ -145,7 +147,14 @@ module DHCP
         self.chaddr = params[:chaddr]
         raise 'chaddr field should be of 16 bytes' unless self.chaddr.size == 16
       else
-        mac = `/sbin/ifconfig | grep HWaddr | cut -c39- | head -1`.chomp.strip.gsub(/:/,'')
+        if Gem.respond_to?(:win_platform?) && Gem.win_platform?
+          mac_line = `getmac /fo list`.split("\n").grep(/Physical Address/).first
+          if mac_line
+            mac = mac_line.strip.split(":")[1].gsub("-","").strip
+          end
+        else
+          mac = `/sbin/ifconfig | grep HWaddr | cut -c39- | head -1`.chomp.strip.gsub(/:/,'')
+        end
         mac = '000000000000' if mac.empty?
         self.chaddr = [mac].pack('H*').unpack('CCCCCC')
         self.chaddr += [0x00]*(16-self.chaddr.size)
